@@ -4,5 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Olá @Html.DisplayFor(model => model.Nome)</h2>
-
+@using (Html.BeginForm("Index", "Primeiro", 
+    new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, 
+    new { @class = "form-horizontal", role = "form" }))
+{
+    if (Model.Nome != null)
+    {
+        <h2>Olá @Html.DisplayFor(model => model.Nome)</h2>
+    }
+    else
+    {
+        <input type="submit" value="Enviar" />
+    }
+}
